@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {motion} from 'framer-motion'
 
 const Home = () => {
   const [heroAnim, setHeroAnim] = useState(false);
@@ -66,37 +67,44 @@ const Home = () => {
 
       let maxTl = gsap.timeline();
       maxTl.add(heroOneAnim());
-      let tl = gsap.timeline({
-        scrollTrigger:{
-          // markers:true,
-          // trigger:".boxes", 
-          trigger:".boxes",
-          start:"top bottom",
-          scrub:true,
-          // pin:".boxes",
-          // end:`+10000 top`,
-          // end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
-        }
-      })
+      // let tl = gsap.timeline({
+      //   scrollTrigger:{
+      //     // markers:true,
+      //     // trigger:".boxes", 
+      //     trigger:".boxes",
+      //     start:"top bottom",
+      //     scrub:true,
+      //     // pin:".boxes",
+      //     // end:`+10000 top`,
+      //     // end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
+      //   }
+      // })
 
-      const items = gsap.utils.toArray(".box")
-      items.forEach((item, index)=>{
-         tl.to(item, {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:item,markers:true, scrub:true, toggleActions:"none none none none"} })
-      })
-      // gsap.to(".one", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".one",markers:true, scrub:true, toggleActions:"restart none reverse none"} })
-      // gsap.to(".two", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".two", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      // gsap.to(".three", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".three", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      // gsap.to(".four", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:".four", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      // tl.to(".box",  {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%', stagger:.5})
+      // const items = gsap.utils.toArray(".box")
+      // items.forEach((item, index)=>{
+      //    tl.to(item, {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:item,markers:true, scrub:true, toggleActions:"none none none none"} })
+      // })
       // tl.to(".box", {y:0,opacity:1,scaleY:1, stagger:0}, )
     });
 
     return () => ctx.revert();
   }, []);
 
+  const boxVariant = {
+    hidden:{
+      clipPath:'polygon(0 0, 100% 0, 100% 0, 0 0)'
+    },
+    visible:{
+      clipPath:'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+      transition:{
+        duration:2,
+        type:'spring'
+      }
+    }
+  }
+
   return (
     <div className="home--wrap">
-      {/* <div className="fixed top-0 left-0 bg-blue-500 z-50 p-5">{boxRef.current}</div> */}
       <div className="cover--all fixed top-0 left-0 h-screen w-full bg-black flex flex-col items-center justify-center text-center p z-30">
         <div className="space-y-3">
           <p className="initial-text text-4xl">New Dawn</p>
@@ -138,7 +146,7 @@ const Home = () => {
             className="boxes grid md:grid-cols-2 lg:grid-cols-3 gap-y-10 py-20 text-left"
             ref={boxRef}
           >
-            <div className="box one">
+            <motion.div variants={boxVariant} initial="hidden" whileInView="visible" className="box one">
               <img
                 src="https://images.unsplash.com/photo-1679214110740-15f5ed4d7caa?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzk4Mzg1NTY&ixlib=rb-4.0.3&q=85"
                 alt="img"
@@ -150,8 +158,8 @@ const Home = () => {
                 </h3>
                 <p className="pt-1 text-sm font-medium">$ 23</p>
               </div>
-            </div>
-            <div className="box two">
+            </motion.div>
+            <motion.div variants={boxVariant} initial="hidden" whileInView="visible" className="box two">
               <img
                 src="https://images.unsplash.com/photo-1679349909423-6f5ffad19302?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzk4NDA0OTY&ixlib=rb-4.0.3&q=85"
                 alt="img"
@@ -163,8 +171,8 @@ const Home = () => {
                 </h3>
                 <p className="pt-1 text-sm font-medium">$ 43.87</p>
               </div>
-            </div>
-            <div className="box three">
+            </motion.div>
+            <motion.div variants={boxVariant} initial="hidden" whileInView="visible" className="box three">
               <img
                 src="https://images.unsplash.com/photo-1678314530817-68b4966f1b07?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzk4NTIyOTA&ixlib=rb-4.0.3&q=85"
                 alt="img"
@@ -176,8 +184,8 @@ const Home = () => {
                 </h3>
                 <p className="pt-1 text-sm font-medium">$ 23</p>
               </div>
-            </div>
-            <div className="box four">
+            </motion.div>
+            <motion.div variants={boxVariant} initial="hidden" whileInView="visible" className="box four">
               <img
                 src="https://images.unsplash.com/photo-1678802676747-308470207d98?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzk4NTIzMjU&ixlib=rb-4.0.3&q=85"
                 alt="img"
@@ -189,7 +197,7 @@ const Home = () => {
                 </h3>
                 <p className="pt-1 text-sm font-medium">$ 43.87</p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
 
