@@ -79,7 +79,8 @@ const Home = () => {
           end:"+=3000",
           scrub:true,
           pin:true,
-          anticipatePin:1
+          anticipatePin:1,
+          snap:0.25 // because we have four images basically, if we had five, it would be 0.2 or 1/5 and so on
         }
       })
 
