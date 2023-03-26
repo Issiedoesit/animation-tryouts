@@ -18,7 +18,7 @@ const TOne = () => {
 
       const ctx = gsap.context(()=>{
         var frame_count  = 42,
-        offset_value = 100;
+        offset_value = 68;
 
       gsap.to(".viewer", {
       backgroundPosition: (-offset_value * frame_count * 2) + "px 50%",
@@ -45,7 +45,7 @@ const TOne = () => {
         <p className="pt-4">{pos}</p></div>
         <div class="scene section" id="sticky">
           <div className="w-full h-screen viewer">  
-          <img src={Rabbit} className="w-full h-screen rabbit" />
+          {/* <img src={Rabbit} className="w-full h-screen rabbit" /> */}
           </div>
         </div>
         <div className="h-screen w-full bg-slate-500 text-4xl flex item-center justify-center">End</div>
