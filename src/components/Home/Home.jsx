@@ -32,6 +32,10 @@ const Home = () => {
           { y: 100, opacity: 0, scaleX: 0 },
           { y: 0, opacity: 1, scaleX: 1, duration: 1, stagger: 0.5 }
         );
+        tl.to(
+          '.hero--bg',
+          { backgroundSize: 'cover', duration: 1 }
+        );
         tl.to('.cover--all', { y: '-100%', duration: 2 });
         tl.to('.line', { padding: '16px', duration: 1 });
         tl.fromTo(
@@ -56,35 +60,24 @@ const Home = () => {
         return tl;
       };
 
-      // const boxesAnim = gsap.to('.box', {
-      //   scrollTrigger: {
-      //     trigger: '.box',
-      //     // markers: true,
-      //   },
-      //   clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-      //   stagger: 0.5,
-      // });
-
       let maxTl = gsap.timeline();
       maxTl.add(heroOneAnim());
-      // let tl = gsap.timeline({
-      //   scrollTrigger:{
-      //     // markers:true,
-      //     // trigger:".boxes", 
-      //     trigger:".boxes",
-      //     start:"top bottom",
-      //     scrub:true,
-      //     // pin:".boxes",
-      //     // end:`+10000 top`,
-      //     // end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
-      //   }
-      // })
 
-      // const items = gsap.utils.toArray(".box")
-      // items.forEach((item, index)=>{
-      //    tl.to(item, {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:item,markers:true, scrub:true, toggleActions:"none none none none"} })
-      // })
-      // tl.to(".box", {y:0,opacity:1,scaleY:1, stagger:0}, )
+      const translateBoxesTl = gsap.timeline({
+        scrollTrigger:{
+          trigger:'.viewer',
+          end:"+=3000",
+          scrub:1,
+          pin:true
+        }
+      })
+
+      translateBoxesTl.to(".black", {y: "0%", duration:2} )
+      translateBoxesTl.to(".teal", {x: "0%", duration:2} )
+      translateBoxesTl.to(".brown", {y: "0%", duration:2} )
+      translateBoxesTl.to(".purple", {x: "0%", duration:2} )
+
+     
     });
 
     return () => ctx.revert();
@@ -140,7 +133,14 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-screen w-full bg-blue-500"></div>
+      <div className="h-screen w-full viewer bg-blue-500 overflow-hidden">
+            <div className="bg-black h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 black z-20">black</div>
+            <div className="bg-red-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 teal text-black -translate-x-[100%] z-30">Teal</div>
+            <div className="bg-red-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 brown text-black translate-y-[100%] z-40">Teal</div>
+            <div className="bg-purple-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 purple text-black translate-x-[100%] z-40">Purple</div>
+          </div>
+
+      
 
       <div
             className="boxes grid md:grid-cols-2 lg:grid-cols-3 gap-y-10 py-20 text-left"
@@ -198,10 +198,13 @@ const Home = () => {
                 <p className="pt-1 text-sm font-medium">$ 43.87</p>
               </div>
             </motion.div>
-          </div>
+        </div>
 
 
-          <div className="h-screen w-full bg-blue-500"></div>
+        <div className="h-screen w-full bg-blue-500"></div>
+
+
+          
 
     </div>
   );

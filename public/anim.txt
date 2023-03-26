@@ -29,3 +29,24 @@
          tl.from(".box",  {y:-100, opacity:0, scaleY:0}, "+=5")
         heroAnim && tl.to(".box", {y:-100, opacity:0, scaleY:0}, {y:0,opacity:1,scaleY:1, stagger:0.5}, "+=5")
       })
+
+
+
+
+       // let tl = gsap.timeline({
+      //   scrollTrigger:{
+      //     // markers:true,
+      //     // trigger:".boxes", 
+      //     trigger:".boxes",
+      //     start:"top bottom",
+      //     scrub:true,
+      //     // pin:".boxes",
+      //     // end:`+10000 top`,
+      //     // end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
+      //   }
+      // })
+
+      // const items = gsap.utils.toArray(".box")
+      // items.forEach((item, index)=>{
+      //    tl.to(item, {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:item,markers:true, scrub:true, toggleActions:"none none none none"} })
+      // })
