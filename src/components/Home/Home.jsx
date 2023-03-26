@@ -75,14 +75,19 @@ const Home = () => {
           scrub:true,
           // pin:".boxes",
           // end:`+10000 top`,
-          end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
+          // end:`+=${document.querySelector('.boxes').clientHeight * 4} top`,
         }
       })
-      gsap.to(".one", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".one",markers:true, scrub:true, toggleActions:"restart none reverse none"} })
-      gsap.to(".two", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".two", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      gsap.to(".three", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".three", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      gsap.to(".four", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:".four", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
-      // tl.fromTo(".box",  {y:-100, opacity:0, scaleY:0}, {y:0,opacity:1,scaleY:1, duration:10, stagger:0.5},)
+
+      const items = gsap.utils.toArray(".box")
+      items.forEach((item, index)=>{
+         tl.to(item, {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:item,markers:true, scrub:true, toggleActions:"none none none none"} })
+      })
+      // gsap.to(".one", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".one",markers:true, scrub:true, toggleActions:"restart none reverse none"} })
+      // gsap.to(".two", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".two", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
+      // gsap.to(".three", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:".boxes", trigger:".three", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
+      // gsap.to(".four", {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration:1, scrollTrigger:{pin:true, trigger:".four", markers:true, scrub:true, toggleActions:"restart none reverse none" } })
+      // tl.to(".box",  {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%', stagger:.5})
       // tl.to(".box", {y:0,opacity:1,scaleY:1, stagger:0}, )
     });
 
@@ -130,7 +135,7 @@ const Home = () => {
       <div className="h-screen w-full bg-blue-500"></div>
 
       <div
-            className="boxes grid md:grid-cols-2 lg:grid-cols-3 gap-y-10 py-20 text-left auto-cols-fr"
+            className="boxes grid md:grid-cols-2 lg:grid-cols-3 gap-y-10 py-20 text-left"
             ref={boxRef}
           >
             <div className="box one">
