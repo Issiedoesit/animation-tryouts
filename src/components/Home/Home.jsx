@@ -67,7 +67,7 @@ const Home = () => {
         scrollTrigger:{
           trigger:'.viewer',
           end:"+=3000",
-          scrub:1,
+          scrub:true,
           pin:true,
           anticipatePin:1
         }
