@@ -60,3 +60,16 @@
 .brown{
   background: url(https://images.unsplash.com/photo-1679305289765-c899db4ce88a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzk4NjIwNTM&ixlib=rb-4.0.3&q=85);
 }
+
+.viewer{
+  background-image: url('./assets/media/gifs/rabbit-sprite-sheet.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 25%;
+}
+/* .viewer{
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/doodle-sprite.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+} */
