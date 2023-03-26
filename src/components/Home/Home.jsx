@@ -68,7 +68,8 @@ const Home = () => {
           trigger:'.viewer',
           end:"+=3000",
           scrub:1,
-          pin:true
+          pin:true,
+          anticipatePin:1
         }
       })
 
