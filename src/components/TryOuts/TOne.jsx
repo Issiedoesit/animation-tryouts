@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import {gsap} from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
 import Rabbit from './../../assets/media/gifs/rabbit-sprite-sheet.png'
@@ -10,7 +10,12 @@ import Rabbit from './../../assets/media/gifs/rabbit-sprite-sheet.png'
 const TOne = () => {
   gsap.registerPlugin(ScrollTrigger)
 
+  const [pos, setPos] = useState(0)
+
     useEffect(()=>{
+      // const position = document.querySelector('.rabbit').css('backgroundPosition')
+      // setPos(position)
+
       const ctx = gsap.context(()=>{
         var frame_count  = 42,
         offset_value = 100;
@@ -27,6 +32,7 @@ const TOne = () => {
         scrub: true
       }
 });
+
       })
 
       return () => ctx.revert()
@@ -34,10 +40,12 @@ const TOne = () => {
 
     return(
       <section>
-        <div className="h-screen w-full bg-slate-500 text-4xl flex item-center justify-center"><p>Start</p></div>
+        <div className="h-screen w-full bg-slate-500 text-4xl flex flex-col item-center justify-center"><p>Start</p>
+        <br />
+        <p className="pt-4">{pos}</p></div>
         <div class="scene section" id="sticky">
           <div className="w-full h-screen viewer">  
-          {/* <img src={Rabbit} className="w-full h-screen" /> */}
+          <img src={Rabbit} className="w-full h-screen rabbit" />
           </div>
         </div>
         <div className="h-screen w-full bg-slate-500 text-4xl flex item-center justify-center">End</div>
