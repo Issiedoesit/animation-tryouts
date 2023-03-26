@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+#root {
+  font-family: 'Lato', sans-serif;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.box{
+  /* -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}

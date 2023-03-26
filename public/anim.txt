@@ -1,0 +1,31 @@
+  let tl = gsap.timeline({
+            scrollTrigger:{
+              trigger:".hero--bg",
+              markers:true,
+              pin:true, 
+              scrub:4, 
+              // endTrigger:".boxes",
+              // end:"+=500 top"
+              onLeave:()=>setHeroAnim(true)
+            }
+          })
+
+          tl.fromTo(".initial-text", {y:100, opacity:0, scaleX:0}, {y:0,opacity:1,scaleX:1, duration:1, stagger:0.5})
+          tl.to(".cover--all", {y: "-100%", duration:2})
+          tl.to(".line", {padding: "16px", duration:1})
+          tl.fromTo(".line", {rotate: "45", duration:1}, {rotate: "0", duration:0.25, repeat:2, yoyo:true})
+          tl.to(".line", {width: "100%", duration:1})
+          tl.fromTo(".move--down-first", {opacity:0, y: "-100%"}, {opacity:1, y: "0%", duration:1})
+          tl.fromTo(".move--up-first", {opacity:0, y: "100%"}, {opacity:1, y: "0%", duration:1}, "-=1")
+          tl.to(".line", {height: "200px", duration:.75})
+          tl.to(".line", {padding:"0", width: "2px", duration:.75}, "-=.25")
+         
+        //  let tlTwo = gsap.timeline({
+        //    scrollTrigger:{
+        //      trigger:".boxes",
+             
+        //    }
+        //  })
+         tl.from(".box",  {y:-100, opacity:0, scaleY:0}, "+=5")
+        heroAnim && tl.to(".box", {y:-100, opacity:0, scaleY:0}, {y:0,opacity:1,scaleY:1, stagger:0.5}, "+=5")
+      })
