@@ -21,7 +21,7 @@ const TOne = () => {
         offset_value = 68;
 
       gsap.to(".viewer", {
-      backgroundPosition: (-offset_value * frame_count * 2) + "px 50%",
+      backgroundPosition: (-offset_value * frame_count * 2) + "px 0%",
       ease: "steps(" + frame_count + ")", // use a stepped ease for the sprite sheet
       // duration:4,
       scrollTrigger: {
