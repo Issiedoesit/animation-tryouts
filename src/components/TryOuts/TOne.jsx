@@ -17,21 +17,20 @@ const TOne = () => {
       // setPos(position)
 
       const ctx = gsap.context(()=>{
-        var frame_count  = 42,
-        offset_value = 68;
+        var frame_count  = 9,
+        offset_value = 90;
 
-      gsap.to(".viewer", {
-      backgroundPosition: (-offset_value * frame_count * 2) + "px 0%",
-      ease: "steps(" + frame_count + ")", // use a stepped ease for the sprite sheet
-      // duration:4,
-      scrollTrigger: {
-        trigger: ".scene",
-        start: "top top",
-        end: "+=" + (frame_count * offset_value),
-        pin: true,
-        scrub: true
-      }
-});
+        gsap.to(".viewer", {
+          backgroundPosition: (-offset_value * frame_count * 2) + "px 50%",
+          ease: "steps(" + frame_count + ")", // use a stepped ease for the sprite sheet
+          scrollTrigger: {
+            trigger: ".scene",
+            start: "top top",
+            end: "+=" + (frame_count * offset_value),
+            pin: true,
+            scrub: true
+          }
+        });
 
       })
 
