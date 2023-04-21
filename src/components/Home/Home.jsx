@@ -152,8 +152,8 @@ const Home = () => {
       </div>
 
       <div className="h-screen w-full viewer bg-blue-500 overflow-hidden">
-            <div className="bg-black h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 black z-20">black</div>
-            <div className="bg-red-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 teal text-black -translate-x-[100%] z-30">Teal</div>
+            <div className="bg-black h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 black z-20 text-white -translate-y-[100%]">black</div>
+            <div className="bg-pink-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 teal text-black -translate-x-[100%] z-30">Teal</div>
             <div className="bg-red-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 brown text-black translate-y-[100%] z-40">Teal</div>
             <div className="bg-purple-500 h-full w-full flex items-center justify-center text-4xl absolute top-0 left-0 purple text-black translate-x-[100%] z-40">Purple</div>
           </div>
@@ -161,7 +161,7 @@ const Home = () => {
       
 
       <div
-            className="boxes grid md:grid-cols-2 lg:grid-cols-3 auto-cols-fr gap-y-10 py-20 text-left"
+            className="boxes grid md:grid-cols-2 lg:grid-cols-3 auto-cols-fr gap-y-10 py-20 text-left bg-red-500"
             ref={boxRef}
           >
             <motion.div variants={boxVariant} initial="hidden" whileInView="visible" className="box one">
